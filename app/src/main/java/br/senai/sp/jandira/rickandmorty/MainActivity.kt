@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import br.senai.sp.jandira.rickandmorty.model.CharacterList
+import br.senai.sp.jandira.rickandmorty.model.Info
 import br.senai.sp.jandira.rickandmorty.service.RetrofitFactory
 import br.senai.sp.jandira.rickandmorty.ui.theme.RickAndMortyTheme
 import retrofit2.Callback
@@ -45,6 +46,10 @@ fun Greeting(name: String) {
         mutableStateOf(listOf<br.senai.sp.jandira.rickandmorty.model.Character>())
     }
 
+    var info by remember {
+        mutableStateOf(Info)
+    }
+
     Column() {
         Button(onClick = {
             //Chamada para a API
@@ -56,6 +61,7 @@ fun Greeting(name: String) {
                     response: Response<CharacterList>
                 ) {
                     results = response.body()!!.results
+                    info = response.body()!!.info
                 }
 
                 override fun onFailure(call: Call<CharacterList>, t: Throwable) {
