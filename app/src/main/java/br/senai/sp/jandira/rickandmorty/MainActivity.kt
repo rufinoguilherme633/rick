@@ -108,6 +108,7 @@ fun Greeting(name: String) {
                 textAlign = TextAlign.End,
                 modifier = Modifier.size(width = 40.dp, height = 20.dp)
             )
+
         }
         Spacer(modifier = Modifier.height(8.dp))
         LazyColumn() {
@@ -142,6 +143,12 @@ fun Greeting(name: String) {
                                 text = it.species,
                                 fontSize = 18.sp,
                                 color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = it.location.name,
+                                fontSize = 18.sp,
+                                color = Color.Yellow,
                                 fontWeight = FontWeight.Bold
                             )
                         }
